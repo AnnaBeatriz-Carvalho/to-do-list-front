@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-text">
+                <h1>Minhas Tarefas</h1>
+                <p id="current-date">Carregando data...</p>
+            </div>
+            <button id="btn-new-task" class="btn-primary">
+                <i class="fas fa-plus"></i> Nova Tarefa
+            </button>
+        </header>
+
+        <section class="stats-grid">
+            <div class="card stat-card purple">
+                <div class="stat-info">
+                    <span class="stat-label">Total de Tarefas</span>
+                    <h2 id="total-count">0</h2>
+                </div>
+                <div class="stat-icon"><i class="fas fa-list-ul"></i></div>
+            </div>
+            <div class="card stat-card white">
+                <div class="stat-info">
+                    <span class="stat-label">Tarefas de Hoje</span>
+                    <h2 id="today-count">0</h2>
+                    <small>Para fazer hoje</small>
+                </div>
+                <div class="stat-icon"><i class="far fa-calendar-alt"></i></div>
+            </div>
+            <div class="card stat-card orange">
+                <div class="stat-info">
+                    <span class="stat-label">Pendentes</span>
+                    <h2 id="pending-count">0</h2>
+                </div>
+                <div class="stat-icon"><i class="far fa-clock"></i></div>
+            </div>
+            <div class="card stat-card green">
+                <div class="stat-info">
+                    <span class="stat-label">Concluídas</span>
+                    <h2 id="done-count">0</h2>
+                </div>
+                <div class="stat-icon"><i class="far fa-check-circle"></i></div>
+            </div>
+        </section>
+
+        <div class="main-content">
+            <div class="tasks-column">
+                <div class="filter-tabs">
+                    <button class="tab active" onclick="filterTasks('all')">
+                        <i class="fas fa-th-large"></i> Todas
+                    </button>
+                    <button class="tab" onclick="filterTasks('today')">
+                        <i class="far fa-calendar"></i> Hoje
+                    </button>
+                    <button class="tab" onclick="filterTasks('pending')">
+                        <i class="far fa-clock"></i> Pendentes
+                    </button>
+                    <button class="tab" onclick="filterTasks('done')">
+                        <i class="far fa-check-circle"></i> Concluídas
+                    </button>
+                </div>
+
+                <div class="section-title">
+                    <h3 id="list-title">Todas as Tarefas</h3>
+                    <span id="loading" style="display:none;">A atualizar...</span>
+                </div>
+
+                <ul id="task-list">
+                    </ul>
+            </div>
+
+            <div class="progress-column">
+                <div class="card progress-card">
+                    <h3>Progresso Geral</h3>
+                    <div class="chart-container">
+                        <div class="circular-progress" id="progress-circle">
+                            <span class="progress-value" id="progress-text">0%</span>
+                        </div>
+                        <p>Concluído</p>
+                    </div>
+                    
+                    <div class="mini-stats">
+                        <div class="mini-stat">
+                            <strong id="mini-pending">0</strong>
+                            <span>A Fazer</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong id="mini-done">0</strong>
+                            <span>Feitas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-wrapper" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Nova Tarefa</h3>
+                <button onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="task-form">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="titulo" placeholder="Ex: Revisar relatório" required>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="descricao" placeholder="Detalhes da tarefa..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary full-width">Criar Tarefa</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./src/assets/JS/script.js"></script>
+</body>
+</html>
