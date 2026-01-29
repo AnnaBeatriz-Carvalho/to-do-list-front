@@ -33,3 +33,6 @@ Um sistema completo de gerenciamento de tarefas (To-Do List) com interface moder
 ### Pré-requisitos
 * Node.js instalado
 * Git instalado
+```bash
+https://github.com/AnnaBeatriz-Carvalho/to-do-list-front.git
+cd nome-do-repositorio
